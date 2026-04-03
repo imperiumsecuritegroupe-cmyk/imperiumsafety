@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function AnimationInit() {
+  const pathname = usePathname();
+
   useEffect(() => {
     // IntersectionObserver for fade-in animations
     const observer = new IntersectionObserver(
@@ -52,7 +55,7 @@ export default function AnimationInit() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
